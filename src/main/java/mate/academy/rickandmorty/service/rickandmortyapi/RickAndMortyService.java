@@ -5,7 +5,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import mate.academy.rickandmorty.dto.CharacterResultsDataDto;
 import mate.academy.rickandmorty.mapper.CharacterMapper;
-import mate.academy.rickandmorty.repository.CharacterRepository;
+import mate.academy.rickandmorty.repository.character.CharacterRepository;
 import org.springframework.stereotype.Service;
 
 @Service

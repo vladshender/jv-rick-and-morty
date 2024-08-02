@@ -2,6 +2,7 @@ package mate.academy.rickandmorty.mapper;
 
 import java.util.List;
 import mate.academy.rickandmorty.config.MapperConfig;
+import mate.academy.rickandmorty.dto.CharacterDto;
 import mate.academy.rickandmorty.dto.CharacterResultsDataDto;
 import mate.academy.rickandmorty.model.Character;
 import org.mapstruct.Mapper;
@@ -13,4 +14,9 @@ public interface CharacterMapper {
     Character toModel(CharacterResultsDataDto resultsDataDto);
 
     List<Character> toModelList(List<CharacterResultsDataDto> resultsDataDtoList);
+
+    @Mapping(source = "externalId", target = "id")
+    CharacterDto toDto(Character character);
+
+    List<CharacterDto> toListDto(List<Character> characters);
 }
