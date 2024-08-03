@@ -21,7 +21,7 @@ public class RickAndMortyService {
 
     private final List<CharacterResultsDataDto> allResults = new ArrayList<>();
 
-    public void getAllCharacters() {
+    public void saveAllCharacters() {
         int page = DEFAULT_NUMBER_PAGE;
 
         while (true) {
