@@ -10,15 +10,22 @@ import org.springframework.stereotype.Component;
 @Component
 public class NameSpecificationProvider implements SpecificationProvider<Character> {
 
+    public static final String NAME_KEY = "name";
+    public static final String WILDCARD = "%";
+
     @Override
     public String getKey() {
-        return "name";
+        return NAME_KEY;
     }
 
     public Specification<Character> getSpecification(String[] params) {
         return (root, query, criteriaBuilder) -> {
             Predicate[] predicates = Arrays.stream(params)
-                    .map(param -> criteriaBuilder.like(root.get("name"), "%" + param + "%"))
+                    .map(param -> criteriaBuilder.like(
+                            root.get(NAME_KEY),
+                            WILDCARD + param + WILDCARD
+                            )
+                    )
                     .toArray(Predicate[]::new);
             return criteriaBuilder.or(predicates);
         };

@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class RickAndMortyClient {
-
     private final ObjectMapper objectMapper;
 
     public List<CharacterResultsDataDto> getAllCharactersFromApi(String url) {

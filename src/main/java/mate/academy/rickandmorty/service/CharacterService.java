@@ -5,7 +5,6 @@ import mate.academy.rickandmorty.dto.CharacterDto;
 import mate.academy.rickandmorty.dto.CharacterSearchParameters;
 
 public interface CharacterService {
-
     List<CharacterDto> getAll();
 
     CharacterDto findById(Long id);

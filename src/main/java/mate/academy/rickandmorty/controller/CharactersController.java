@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/character")
 @RequiredArgsConstructor
 public class CharactersController {
-
     private final CharacterServiceImpl characterService;
 
     @GetMapping("/all")

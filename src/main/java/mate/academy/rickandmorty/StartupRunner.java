@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class StartupRunner implements CommandLineRunner {
-
     private final RickAndMortyService rickAndMortyService;
 
     @Override

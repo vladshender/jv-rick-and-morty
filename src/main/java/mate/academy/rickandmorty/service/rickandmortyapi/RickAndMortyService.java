@@ -6,18 +6,20 @@ import lombok.RequiredArgsConstructor;
 import mate.academy.rickandmorty.dto.CharacterResultsDataDto;
 import mate.academy.rickandmorty.mapper.CharacterMapper;
 import mate.academy.rickandmorty.repository.character.CharacterRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class RickAndMortyService {
-
-    private static final String BASE_URL = "https://rickandmortyapi.com/api/character/?page=%s";
     private static final int DEFAULT_NUMBER_PAGE = 1;
 
     private final RickAndMortyClient rickAndMortyClient;
     private final CharacterRepository characterRepository;
     private final CharacterMapper characterMapper;
+
+    @Value("${base.url}")
+    private String baseUrl;
 
     private final List<CharacterResultsDataDto> allResults = new ArrayList<>();
 
@@ -25,7 +27,7 @@ public class RickAndMortyService {
         int page = DEFAULT_NUMBER_PAGE;
 
         while (true) {
-            String url = String.format(BASE_URL, page);
+            String url = String.format(baseUrl, page);
             List<CharacterResultsDataDto> results = rickAndMortyClient.getAllCharactersFromApi(url);
 
             if (results == null || results.isEmpty()) {

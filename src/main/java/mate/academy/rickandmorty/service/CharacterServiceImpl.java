@@ -5,6 +5,7 @@ import java.util.Random;
 import lombok.RequiredArgsConstructor;
 import mate.academy.rickandmorty.dto.CharacterDto;
 import mate.academy.rickandmorty.dto.CharacterSearchParameters;
+import mate.academy.rickandmorty.exception.EntityNotFoundException;
 import mate.academy.rickandmorty.mapper.CharacterMapper;
 import mate.academy.rickandmorty.model.Character;
 import mate.academy.rickandmorty.repository.character.CharacterRepository;
@@ -31,7 +32,7 @@ public class CharacterServiceImpl implements CharacterService {
     @Override
     public CharacterDto findById(Long id) {
         Character character = characterRepository.findById(id).orElseThrow(
-                () -> new RuntimeException("Can`t find character by id: " + id));
+                () -> new EntityNotFoundException("Can`t find character by id: " + id));
         return characterMapper.toDto(character);
     }
 
