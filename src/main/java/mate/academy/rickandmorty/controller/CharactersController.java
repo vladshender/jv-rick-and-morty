@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "Rick and Morty managment", description = "Endpoints for managing characters")
 @RestController
-@RequestMapping("/character")
+@RequestMapping("/characters")
 @RequiredArgsConstructor
 public class CharactersController {
     private final CharacterServiceImpl characterService;
@@ -30,7 +30,7 @@ public class CharactersController {
     }
 
     @Operation(summary = "Find character by name", description = "Find character by name from DB")
-    @GetMapping("/search")
+    @GetMapping
     public List<CharacterDto> search(CharacterSearchParameters characterSearchParameters) {
         return characterService.search(characterSearchParameters);
     }

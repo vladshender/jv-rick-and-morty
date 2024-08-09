@@ -13,7 +13,6 @@ import lombok.Setter;
 @Setter
 @Table(name = "characters")
 public class Character {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

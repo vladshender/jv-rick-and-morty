@@ -1,6 +1,7 @@
 package mate.academy.rickandmorty.repository.character;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import lombok.RequiredArgsConstructor;
 import mate.academy.rickandmorty.model.Character;
 import mate.academy.rickandmorty.repository.SpecificationProvider;
@@ -16,9 +17,10 @@ public class CharacterSpecificationProviderManager
     @Override
     public SpecificationProvider<Character> getSpecificationProvider(String key) {
         return specificationProviderList.stream()
-                .filter(b -> b.getKey().equals(key))
+                .filter(provider -> provider.getKey().equals(key))
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("Can`t find correct specification for key: "
-                        + key));
+                .orElseThrow(() -> new NoSuchElementException(
+                        "Can`t find correct specification for key: " + key)
+                );
     }
 }

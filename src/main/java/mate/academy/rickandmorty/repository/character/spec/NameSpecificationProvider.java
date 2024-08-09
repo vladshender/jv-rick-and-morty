@@ -9,9 +9,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class NameSpecificationProvider implements SpecificationProvider<Character> {
-
-    public static final String NAME_KEY = "name";
-    public static final String WILDCARD = "%";
+    private static final String NAME_KEY = "name";
+    private static final String WILDCARD = "%";
 
     @Override
     public String getKey() {

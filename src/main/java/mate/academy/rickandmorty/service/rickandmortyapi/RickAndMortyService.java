@@ -25,18 +25,17 @@ public class RickAndMortyService {
 
     public void saveAllCharacters() {
         int page = DEFAULT_NUMBER_PAGE;
+        List<CharacterResultsDataDto> results;
 
-        while (true) {
+        do {
             String url = String.format(baseUrl, page);
-            List<CharacterResultsDataDto> results = rickAndMortyClient.getAllCharactersFromApi(url);
+            results = rickAndMortyClient.getAllCharactersFromApi(url);
 
-            if (results == null || results.isEmpty()) {
-                break;
+            if (results != null && !results.isEmpty()) {
+                allResults.addAll(results);
+                page++;
             }
-
-            allResults.addAll(results);
-            page++;
-        }
+        } while (results != null && !results.isEmpty());
 
         characterRepository.saveAll(characterMapper.toModelList(allResults));
     }
